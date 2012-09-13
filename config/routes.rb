@@ -10,7 +10,7 @@ Wegroup::Application.routes.draw do
 
   root :to => 'pages#home'
 
-      
+# matches ’/about’ and routes it to the about action in the Pages controller.       
   match '/help',    to: 'pages#help'
   match '/about',   to: 'pages#about'
   match '/groups',   to: 'pages#groups'
