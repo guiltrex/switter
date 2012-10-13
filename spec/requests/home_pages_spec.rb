@@ -31,5 +31,10 @@ describe "Pages" do
        #uses the page variable (also provided by Capybara)
 		it{should have_selector('title', text: full_title(''))}
   end     
+  
+	describe "sign_up_page" do
+		before{visit signup_path}
+		it{should have_selector('title', text: full_title('Sign up'))}
+	end
 end
 
