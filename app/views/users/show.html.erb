@@ -3,12 +3,10 @@
   <aside class="span4">
     <section>
       <h1>
-				<% if @user.pro_image_url.to_s %>
-					<%= image_tag @user.pro_image_url(:thumb).to_s,
-                          :id => "ProfImage", class: "img-rounded"%>
-        <% else %>                  
-					<%= image_tag "rails.png", alt: "Rails",
-                          :id => "ProfImage", class: "img-rounded"%>
+				<% if @user.pro_image_url%>
+					<%= image_tag @user.pro_image_url(:thumb).to_s,:id => "ProfImage", class: "img-rounded"%>
+        <% else %>   
+					<%= image_tag "rails.png", alt: "Rails", :id => "ProfImage", class: "img-rounded"%>
         <% end %>
         <%= @user.username %>
         </br>
