@@ -10,7 +10,7 @@
   </div>
   
 
-  <div class="pull-right span3 signinup">
+  <div class="pull-right span3 signin">
     <%= form_for(:session, url: sessions_path) do |f| %>
 
       <%= f.label :email %>
@@ -22,9 +22,6 @@
       <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
     <% end %>
 	
-	<div class="signup">
-    <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
-   </div>
   </div>
 
 </div>
