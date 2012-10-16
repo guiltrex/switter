@@ -50,7 +50,19 @@ Wegroup::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
-
+	# Change mail delvery to either :smtp, :sendmail, :file, :test
+		config.action_mailer.delivery_method = :smtp
+		config.action_mailer.smtp_settings = {
+			address: "smtp.gmail.com",
+			port: 587,
+			domain: "wegroup.com",
+			authentication: "plain",
+			enable_starttls_auto: true,
+			user_name: "wegroup.groups",
+			password: "groups@we"
+		}
+	# Specify what domain to use for mailer URLs
+		config.action_mailer.default_url_options = {host: "wegroup.herokuapp.com"}
   # Enable threaded mode
   # config.threadsafe!
 
