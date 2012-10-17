@@ -36,6 +36,9 @@ describe "User pages" do
 				it "should send a confirmation email to the new user" do
 					last_email.to.should include(user1.email)
 				end
+				
+				it { should have_link('Log out', href: logout_path) }
+			
 			end
     end
   end

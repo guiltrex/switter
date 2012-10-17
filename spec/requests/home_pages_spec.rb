@@ -42,7 +42,38 @@ describe "Pages" do
 		before { visit user_path(user) }
 		it { should have_selector('h1',    text: user.username) }
 		it { should have_selector('title', text: user.username) }
+	end
+	
+	describe "home page to sign in" do
+	
+		let(:user1) { FactoryGirl.create(:user) }
+		let(:login) { "Log in" }
+		before do
+			visit root_path      
+    end
 
+    describe "with invalid information" do
+			before { click_button login}
+			it { should have_selector('a', text: "Sign up now!") }
+      it { should have_selector('div.alert.alert-error', text: 'Invalid') }			
+		end
+    
+    describe "with valid information" do
+			before do 
+			  fill_in "session[email]",        with: user1.email
+				fill_in "session[password]",     with: user1.password
+				click_button login
+			end
+			it { should have_selector('h1',    text: user1.username) }
+			it { should have_selector('title', text: user1.username) }
+      it { should have_link('Profile', href: user_path(user1)) }			
+			it { should have_link('Log out', href: logout_path) }
+			
+			describe "followed by signout" do
+        before { click_link "Log out" }
+        it { should have_selector('a', text: "Sign up now!") }
+      end
+		end
 	end
 end
 

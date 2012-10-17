@@ -1,13 +1,13 @@
 Wegroup::Application.routes.draw do
 
   resources :users
-  resources :sessions, only: [:new, :create, :destroy]
+  #:path=>"" used to make '/sessions' disappear in url after incorrect login 
+  resources :sessions, only: [:create, :destroy], :path => ""
 
   match '/users',  to: 'users#index'
   match '/signup',  to: 'users#new'
-  match '/signin',  to: 'sessions#new'
-  match '/signout', to: 'sessions#destroy', via: :delete
-
+  match '/logout', to: 'sessions#destroy', via: :delete
+	
   root :to => 'pages#home'
 
 # matches ’/about’ and routes it to the about action in the Pages controller.       
