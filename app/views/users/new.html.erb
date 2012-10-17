@@ -19,7 +19,7 @@
       <%= f.password_field :password_confirmation %>
 
       <%= f.label "Upload profile image, or use default image"%> 
-			<%= f.file_field :pro_image, class: "pro_image_upload"%>
+			<%= f.file_field :pro_image, :accept => 'image/png,image/gif,image/jpeg', class: "pro_image_upload"%>
 
       <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
     <% end %>

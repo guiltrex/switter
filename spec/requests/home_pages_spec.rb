@@ -73,7 +73,34 @@ describe "Pages" do
         before { click_link "Log out" }
         it { should have_selector('a', text: "Sign up now!") }
       end
-		end
-	end
+    end
+ 	end
+	
+	describe "edit" do
+        let(:user) { FactoryGirl.create(:user) }
+				before { visit edit_user_path(user) }
+				
+				describe "user page" do
+					it { should have_selector('h1', text: "Update your profile") }
+				end
+				
+				describe "with invalid information" do
+					before { click_button "Save changes" }
+
+					it { should have_content('error') }
+				end
+				
+				describe "with valid information" do
+				  let(:new_username){user1.username+"yy"}
+					before do 
+						fill_in "user[username]",    	with: new_username
+						fill_in "user[email]",        with: user1.email
+						fill_in "user[password]",     with: user1.password
+						fill_in "user[password_confirmation]", with: user1.password_confirmation
+						click_button "Save changes"
+					end
+					it { should have_selector('h1', text: new_username) }								
+				end
+      end
 end
 
