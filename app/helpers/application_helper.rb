@@ -9,4 +9,8 @@ module ApplicationHelper
       "#{base_title} | #{page_title}"
     end
   end
+  
+  def show_name(name)
+		name.downcase.capitalize
+	end
 end

@@ -11,9 +11,7 @@
   
 
   <div class="pull-right span3">
-  	<% flash.each do |key, value| %>
-       <div class="alert alert-<%= key %> alert-home"><%= value %></div>
-    <% end %>
+  	<%= render 'shared/flash_home' %>
     <%= form_for(:session, url: sessions_path, html: {class: 'signin'}) do |f| %>
 
       <%= f.label :email %>
