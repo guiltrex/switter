@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_filter :require_login, except: [:new, :create]
-  before_filter :require_correct_user, except: [:new, :create, :index, :show]
+  before_filter :require_correct_user, only: [:edit, :update]
+  before_filter :require_admin, only: :destroy
+  
   def new
 		@user=User.new
   end
@@ -23,6 +25,10 @@ class UsersController < ApplicationController
   end
   
   def destroy
+    User.find(params[:id]).destroy
+    flash.now[:success] = "User deleted."
+#    return_page
+		redirect_to users_path
   end
   
   def edit
@@ -44,5 +50,7 @@ class UsersController < ApplicationController
   end
   
   def index
+		@users = User.paginate(page: params[:page], per_page: 25).order('created_at DESC')
+#		store_page
   end
 end

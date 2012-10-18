@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  attr_accessible :username, :email, :password, :password_confirmation, :pro_image, :remember_token
+  attr_accessible :username, :email, :password, :password_confirmation, 
+									:pro_image, :remember_token
   before_save { |user| user.email = email.downcase}
   before_save { generate_token(:remember_token) }
   has_secure_password
@@ -9,6 +10,10 @@ class User < ActiveRecord::Base
   validates :password, length: {minimum: 6}
   validates :password_confirmation, presence: true  
   mount_uploader :pro_image, ImageUploader
+
+	def admin?
+		self.admin
+	end
   
   private
   def generate_token(column)

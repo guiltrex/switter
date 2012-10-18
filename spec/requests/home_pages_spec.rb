@@ -46,7 +46,7 @@ describe "Pages" do
 						click_button login
 						visit root_path 
 				end
-				it{ should have_selector('h1', text: user.username)}
+				it{ should have_selector('h1', text: show_name(user.username))}
 				it{ should have_selector('title', text: full_title(show_name(user.username)))}
 				it{ should_not have_selector('a', text: "Sign up now!") }
 			end
@@ -77,7 +77,7 @@ describe "Pages" do
 				fill_in "session[password]",     with: user1.password
 				click_button login
 			end
-			it { should have_selector('h1',    text: user1.username) }
+			it { should have_selector('h1',    text: show_name(user1.username)) }
 			it { should have_selector('title', text: show_name(user1.username)) }
       it { should have_link('Profile', href: user_path(user1)) }			
 			it { should have_link('Log out', href: logout_path) }
@@ -91,7 +91,7 @@ describe "Pages" do
 	
 	describe "edit" do
         let(:user) { FactoryGirl.create(:user) }
-        let(:user2) { FactoryGirl.create(:user2) }
+        let(:user2) { FactoryGirl.create(:user1) }
         let(:login) { "Log in" }
 
 				describe "without log in" do
@@ -137,7 +137,7 @@ describe "Pages" do
 								fill_in "user[password_confirmation]", with: user.password_confirmation
 								click_button "Save changes"
 							end
-							it { should have_selector('h1', text: new_username) }								
+							it { should have_selector('h1', text: show_name(new_username)) }								
 						end
 					end
 			end	

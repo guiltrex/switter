@@ -1,0 +1,11 @@
+    <li>
+			<% if user.pro_image_url%>
+				<%= image_tag user.pro_image_url(:thumb).to_s,:id => "new_pimage", class: "img-rounded"%>
+			<% else %>   
+				<%= image_tag "rails.png", alt: "Rails", :id => "new_pimage", class: "img-rounded"%>
+			<% end %>
+      <%= link_to show_name(user.username), user_path(user) %>
+      <% if current_user.admin? && !current_user?(user) %>
+				<%= render(:partial =>"delete_user", :locals => { :user => user }) %>
+			<% end %>		
+    </li>

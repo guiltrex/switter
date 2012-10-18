@@ -1,4 +1,5 @@
 module UsersHelper
+  
   def require_login
 		unless signed_in?
 			flash[:error] = "You must be logged in!"
@@ -6,5 +7,22 @@ module UsersHelper
 			redirect_to root_path
 		end  
   end
+
+	def current_user?(user)
+		user == current_user
+	end
   
+  def require_admin
+		unless current_user.admin?
+			redirect_to users_path
+		end  
+  end	
+
+#  def return_page
+#    redirect_to users_url+"?page=#{session[:page_to]}"
+#  end
+
+#  def store_page
+#    session[:page_to] = params[:page]
+#  end			
 end
