@@ -213,11 +213,19 @@ form .actions {
 form .new_user {
 	display: inline;
 	margin-left: 5px;
+	vertical-align: -1px;	
 }
 
 .alert-home{
 	margin-top: 2px;
 	margin-bottom: 0px;
+}
+
+form .log_in {
+	display: inline;
+	margin-left: 15px;
+	vertical-align: -2px;
+	font-size: 1.2em;
 }
 
 /*profile update form*/

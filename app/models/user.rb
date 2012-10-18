@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessible :username, :email, :password, :password_confirmation, 
-									:pro_image, :remember_token
+									:pro_image
   before_save { |user| user.email = email.downcase}
   before_save { generate_token(:remember_token) }
   has_secure_password
@@ -21,5 +21,4 @@ class User < ActiveRecord::Base
 			self[column]=SecureRandom.urlsafe_base64
 		end while User.exists?(column => self[column])
 	end	
-
 end

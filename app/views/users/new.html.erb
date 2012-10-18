@@ -20,8 +20,11 @@
 
       <%= f.label "Upload profile image, or use default image"%> 
 			<%= f.file_field :pro_image, :accept => 'image/png,image/gif,image/jpeg', class: "pro_image_upload"%>
+				<%= f.submit "Create my account", class: "btn btn-large btn-primary btn-sign-up" %>
+				<div class="log_in">
+						Have an account? <%= link_to "Log in", root_path %>
+				</div>
 
-      <%= f.submit "Create my account", class: "btn btn-large btn-primary btn-sign-up" %>
     <% end %>
   </div>
 </div>
