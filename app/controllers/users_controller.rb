@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   
   def update
 		@user=User.find(params[:id])
-		if @user.update_attributes(params[:user]) && @user.save
+		if @user.update_attributes(params[:user])
 		  #since we have before_save :generate_token, everytime updating profile
 		  #:remember_token column has also been changed. 
 		  #Thus we have to update the cookies[:remember_token]

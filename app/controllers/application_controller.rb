@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   private
   include SessionsHelper
   include UsersHelper
+  
   def require_correct_user
 		@user=User.find(params[:id])
 		unless correct_user?(@user)
@@ -11,4 +12,5 @@ class ApplicationController < ActionController::Base
 			redirect_to root_path
 		end  
   end
+  
 end
