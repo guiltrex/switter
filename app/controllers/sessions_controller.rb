@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 				cookies[:remember_token] = user.remember_token
 				self.current_user = user
 			end
-      redirect_back_or user_path(user)
+      redirect_back_or home_user_path(user)
     else
 			flash.now[:error]="Invalid email or password"
 			render 'pages/home', :layout => 'login_home'

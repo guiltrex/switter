@@ -3,7 +3,7 @@
 		<a href="<%= user_path(current_user) %>">
 			<%= render partial: "users/profimage", :locals => { :user => current_user} %>
 		</a>
-		<%= current_user.username %>
+		<%= show_name(current_user.username) %>
 	<% else %>  
 		<a href="<%= user_path(@user) %>">
 			<%= render partial: "users/profimage", :locals => { :user => @user} %>

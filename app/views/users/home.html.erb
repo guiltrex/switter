@@ -10,7 +10,7 @@
   </aside>
   <div class="span8">
     <% if @microposts.any? %>
-      <h3 class='micropost_title'>Microposts</h3>
+      <h3 class='micropost_title'>New microposts</h3>
       <ol class="microposts">
         <%= render partial: "users/micropost", collection: @microposts %>
       </ol>

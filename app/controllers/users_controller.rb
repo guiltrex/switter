@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 			current_user = @user
 			UserMailer.signup_confirmation(@user).deliver
       flash[:success] = "Sign up successfully. A confirmation email has been sent!"      
-      redirect_to user_path(@user)
+      redirect_to home_user_path(@user)
     else
       render 'new'
     end
@@ -58,7 +58,7 @@ class UsersController < ApplicationController
 		  #Thus we have to update the cookies[:remember_token]
 		  cookies[:remember_token] = @user.remember_token
 			flash[:success]="Profile updated."
-			redirect_to user_path(@user)
+			redirect_to home_user_path(@user)
 		else
 			render "edit"
 		end
