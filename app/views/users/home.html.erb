@@ -1,19 +1,16 @@
-<% provide(:title, show_name(@user.username)) %>
+<% provide(:title) %>
 <div class="row">
   <aside class="span4">
     <section>
 			<%= render "shared/user_info" %>
     </section>
-    <% if current_user?(@user) %>
-			<section>
-				<%= render 'shared/micropost_form' %>
-			</section>
-    <% end %>
-       
+    <section>
+      <%= render 'shared/micropost_form' %>
+     </section>    
   </aside>
   <div class="span8">
-    <% if @user.microposts.any? %>
-      <h3 class='micropost_title'>Microposts (<%= @user.microposts.count %>)</h3>
+    <% if @microposts.any? %>
+      <h3 class='micropost_title'>Microposts</h3>
       <ol class="microposts">
         <%= render partial: "users/micropost", collection: @microposts %>
       </ol>

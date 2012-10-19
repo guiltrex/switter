@@ -1,0 +1,27 @@
+<h1>
+	<% if current_page?(:controller => 'users', :action => 'home') %>
+		<a href="<%= user_path(current_user) %>">
+			<%= render partial: "users/profimage", :locals => { :user => current_user} %>
+		</a>
+		<%= current_user.username %>
+	<% else %>  
+		<a href="<%= user_path(@user) %>">
+			<%= render partial: "users/profimage", :locals => { :user => @user} %>
+		</a>
+    <%= show_name(@user.username) %>
+	<% end %>
+</h1>
+<span>
+  <% if current_page?(:controller => 'users', :action => 'home') %>
+		<%= link_to "view my profile", current_user %>
+	<% else %>
+		<%= @user.email %>
+	<% end %>
+</span>
+<span>
+	<% if current_page?(:controller => 'users', :action => 'home') %>
+		<%= pluralize(current_user.microposts.count, "micropost") %>
+	<% else %>
+		<%= pluralize(@user.microposts.count, "micropost") %>
+	<% end %>
+</span>

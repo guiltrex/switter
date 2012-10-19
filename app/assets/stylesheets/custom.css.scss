@@ -292,3 +292,48 @@ form .btn-sign-up {
     }
   }
 }
+
+/* microposts */
+.micropost_title{
+	padding-top: 2px;
+}
+.microposts {
+  list-style: none;
+  margin: 10px 0 0 0;
+  li {
+    padding: 10px 0 3px 0;
+    border-bottom: 1px solid #e8e8e8;
+		&:last-child {
+			border-bottom: 1px solid $grayLighter;
+		}    
+  }
+}
+
+.content {
+		display: block;
+/*    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 4px 4px 4px 4px; */
+		background-color: #F8F8F8 ;
+    margin-bottom: 10px;
+    min-height: 20px;
+    padding: 15px;
+    word-wrap: break-word;		
+}
+
+.timestamp {
+  color: $grayLight;
+  padding-left: 10px;
+}
+
+#post_image {
+	margin: 10px 0 10px 0;
+  max-width:160px;
+	height: auto;  	
+}
+
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}

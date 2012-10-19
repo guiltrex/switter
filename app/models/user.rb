@@ -10,7 +10,9 @@ class User < ActiveRecord::Base
   validates :password, length: {minimum: 6}
   validates :password_confirmation, presence: true  
   mount_uploader :pro_image, ImageUploader
-
+	
+	has_many :microposts, :dependent => :destroy
+	
 	def admin?
 		self.admin
 	end

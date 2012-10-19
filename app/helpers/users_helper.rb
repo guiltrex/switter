@@ -11,6 +11,10 @@ module UsersHelper
 	def current_user?(user)
 		user == current_user
 	end
+
+  def current_user
+    @current_user ||= User.find_by_remember_token(cookies[:remember_token]) if cookies[:remember_token]
+  end
   
   def require_admin
 		unless current_user.admin?
