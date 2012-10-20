@@ -26,7 +26,7 @@ module UsersHelper
 #    redirect_to users_url+"?page=#{session[:page_to]}"
 #  end
 
-#  def store_page
-#    session[:page_to] = params[:page]
-#  end			
+  def store_page
+    session[:page_to] = params[:page]
+  end			
 end

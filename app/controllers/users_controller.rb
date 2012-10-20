@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :require_login, except: [:new, :create]
-  before_filter :require_correct_user, only: [:edit, :update, :home]
+  before_filter :require_correct_user, only: [:edit, :update]
   before_filter :require_admin, only: :destroy
   
   def new
@@ -19,6 +19,15 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+
+#home will be used in Home link
+#micropost form always exists
+#show all microposts not only by him/herself   
+  def home
+		@micropost = current_user.microposts.build
+		@microposts = Micropost.paginate(page: params[:page])
+		store_page
+  end
  
 #show will be used in Profile link
 #micropost form exists if current_user==params[:user]
@@ -29,16 +38,9 @@ class UsersController < ApplicationController
 			@micropost = current_user.microposts.build
 		end		
 		@microposts = @user.microposts.paginate(page: params[:page])
+		session[:page_to]=nil
   end
 
-#home will be used in Home link
-#micropost form always exists
-#show all microposts not only by him/herself   
-  def home
-		@micropost = current_user.microposts.build
-		@microposts = Micropost.paginate(page: params[:page])
-  end
-  
   def destroy
     User.find(params[:id]).destroy
     flash.now[:success] = "User deleted."

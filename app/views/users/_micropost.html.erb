@@ -9,7 +9,7 @@
 	</section>
   <span class="timestamp">
     Posted 
-    <% if current_page?(:controller => 'users', :action => 'home') %>
+    <% unless current_page?(:controller => 'users', :action => 'show', :id => id_route_ver) %>
     by <a href=<%= user_url(micropost.user)%> ><%=show_name(micropost.user.username)%></a>,
     <% end %>
     <%= time_ago_in_words(micropost.created_at) %> ago

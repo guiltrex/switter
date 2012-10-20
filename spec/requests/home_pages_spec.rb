@@ -47,7 +47,7 @@ describe "Pages" do
 						visit root_path 
 				end
 				it{ should have_selector('h1', text: show_name(user.username))}
-				it{ should have_selector('title', text: full_title(show_name(user.username)))}
+				it{ should have_selector('title', text: full_title(''))}
 				it{ should_not have_selector('a', text: "Sign up now!") }
 			end
   end     
@@ -78,7 +78,7 @@ describe "Pages" do
 				click_button login
 			end
 			it { should have_selector('h1',    text: show_name(user1.username)) }
-			it { should have_selector('title', text: show_name(user1.username)) }
+			it { should have_selector('title', text: full_title('')) }
       it { should have_link('Profile', href: user_path(user1)) }			
 			it { should have_link('Log out', href: logout_path) }
 			
@@ -111,7 +111,7 @@ describe "Pages" do
 					describe "to access invalid settings" do
 							before{visit edit_user_path(user2)}
 							it { should_not have_selector('h1', text: "Update your profile") }
-							it{ should have_selector('title', text: full_title(show_name(user.username)))}			
+							it{ should have_selector('title', text: full_title(''))}			
 					end
 								
 					describe "to access own settings"do

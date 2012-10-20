@@ -45,7 +45,7 @@ describe "MicropostPages" do
 			fill_in "session[email]",        with: user1.email
 			fill_in "session[password]",     with: user1.password
 			click_button login
-			visit user_path(user1)				
+			visit home_user_path(user1)				
 		end
     describe "with invalid information" do
 

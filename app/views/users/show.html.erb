@@ -2,11 +2,11 @@
 <div class="row">
   <aside class="span4">
     <section>
-			<%= render "shared/user_info" %>
+			<%= render partial: "shared/user_info", locals: {id_route_ver: params[:id]||0} %>
     </section>
     <% if current_user?(@user) %>
 			<section>
-				<%= render 'shared/micropost_form' %>
+				<%= render partial: 'shared/micropost_form' %>
 			</section>
     <% end %>
        
@@ -17,7 +17,7 @@
       <%= if current_user?(@user); "me";else; show_name(@user.username);end%>
       (<%= @user.microposts.count %>)</h3>
       <ol class="microposts">
-        <%= render partial: "users/micropost", collection: @microposts %>
+        <%= render partial: "users/micropost", collection: @microposts, locals: {id_route_ver: params[:id]||0} %>
       </ol>
       <%= will_paginate @microposts %>
     <% end %>
