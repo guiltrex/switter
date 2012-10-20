@@ -83,18 +83,15 @@ describe "MicropostPages" do
 		
     describe "by correct user" do
 			before{visit user_path(user1)}
-      it { should have_link("Delete", href: micropost_path(m1)) }
+      it { should have_link("delete", href: micropost_path(m1)) }
       it "should be able to delete the micropost" do
-        expect { click_link('Delete') }.to change(Micropost, :count).by(-1)
-      end
+        expect { click_link('delete') }.to change(Micropost, :count).by(-1)
+      end 
     end
 
     describe "by wrong user" do
 			before{visit user_path(user2)}
       it { should_not have_link("Delete", href: micropost_path(m2)) }
-      it "should not be able to delete the micropost" do
-        expect { click_link('Delete') }.not_to change(Micropost, :count)
-      end
     end    
   end  
 end
