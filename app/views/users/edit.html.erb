@@ -19,7 +19,7 @@
       <%= f.password_field :password_confirmation %>
 			
 			<div class="edit_image_field">
-				<%= render partial: "newpimage" %>
+				<%= render partial: "users/newpimage", locals: {user: @user}%>
 				<%= f.file_field :pro_image, :accept => 'image/png,image/gif,image/jpeg', class: "new_profimage"%>
 			</div>
 			<div class="actions">	

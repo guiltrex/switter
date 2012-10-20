@@ -1,12 +1,16 @@
 <li>
-	<section class="content">
+  <% unless current_page?(:controller => 'users', :action => 'show', :id => id_route_ver) %>
+		<%= render partial: "users/newpimage", locals: {user: micropost.user} %>
+  <% end %>
+	<section>
+  <span class="content">		
 		<p><%= micropost.content %></p>
   	<% if micropost.post_pic_url%>
 			<a href ="<%=post_pic_url.to_s %>" >
 			<%= image_tag micropost.post_pic_url(:post_thumb).to_s,:id => "post_image", class: " img-rounded"%>
 			</a>
 		<% end %>		
-	</section>
+	</span>
   <span class="timestamp">
     Posted 
     <% unless current_page?(:controller => 'users', :action => 'show', :id => id_route_ver) %>
@@ -14,4 +18,5 @@
     <% end %>
     <%= time_ago_in_words(micropost.created_at) %> ago
   </span>
+  </section>
 </li>

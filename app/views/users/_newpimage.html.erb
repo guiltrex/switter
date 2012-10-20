@@ -1,5 +1,5 @@
-	<% if @user.pro_image_url%>
-		<%= image_tag @user.pro_image_url(:thumb).to_s,:id => "new_pimage", class: "img-rounded"%>
+	<% if user.pro_image_url%>
+		<%= image_tag user.pro_image_url(:thumb).to_s,:id => "new_pimage", class: "img-rounded"%>
 	<% else %>   
 		<%= image_tag "rails.png", alt: "Rails", :id => "new_pimage", class: "img-rounded"%>
 	<% end %>
