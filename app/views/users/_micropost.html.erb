@@ -6,7 +6,7 @@
   <span class="content">		
 		<p><%= micropost.content %></p>
   	<% if micropost.post_pic_url%>
-			<a href ="<%=post_pic_url.to_s %>" >
+			<a href ="<%=micropost.post_pic_url.to_s %>" >
 			<%= image_tag micropost.post_pic_url(:post_thumb).to_s,:id => "post_image", class: " img-rounded"%>
 			</a>
 		<% end %>		

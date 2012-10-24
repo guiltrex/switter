@@ -1,3 +1,6 @@
+$navbarBackground: #3366CC; 
+$navbarBackgroundHighlight: #3366CC; /*#CC0052;*/
+$navbarLinkColor: #c9c9c9;
 @import "bootstrap";
 
 /* mixins, variables, etc. */
@@ -301,7 +304,7 @@ form .btn-sign-up {
   list-style: none;
   margin: 10px 0 0 0;
   li {
-    padding: 10px 0 3px 0;
+    padding: 20px 0 1px 0;
     border-bottom: 1px solid #e8e8e8;
 		&:last-child {
 			border-bottom: 1px solid $grayLighter;
@@ -314,7 +317,7 @@ form .btn-sign-up {
 /*    border: 1px solid rgba(0, 0, 0, 0.05); */
     border-radius: 4px 4px 4px 4px;
 		background-color: #F4F4F4 ;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     min-height: 20px;
     padding: 15px;
     word-wrap: break-word;		
@@ -338,7 +341,39 @@ aside {
   }
 }
 
+.post_image_field{
+	label{
+		width: 150px;
+		display: inline
+	}
+	/*copied from "How to Style Input and File Browse Buttons with CSS" */
+	.post_image_wrapper{
+			width: 93px;
+			height: 28px;
+			background: url('file_browse_normal.png') 0 0 no-repeat;
+			border:none;
+			overflow:hidden;
+	}
+	.post_image_upload{
+		margin-left:-145px;
+		opacity:0;
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+		filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+	}
+	.btn-post{
+		display: inline;
+		float: right;
+		margin-top: 4px;
+	}
+}
+
+
+
+
 /*class for operations like commment, delete or relay in the future*/
 .operation{
 	padding-right: 3px;
 }
+
+
+

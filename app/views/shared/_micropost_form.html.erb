@@ -3,5 +3,12 @@
   <div class="field">
     <%= f.text_area :content, placeholder: "Compose new micropost...", maxlength: 250, rows: 7 %>
   </div>
-  <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+  <span class="post_image_field">
+		<%= f.label "You may attach a picture"%> 
+		<%= f.submit "Post", class: "btn btn-large btn-primary btn-post" %> 
+		<span class="post_image_wrapper"> 
+			<%= f.file_field :post_pic, :accept => 'image/png,image/gif,image/jpeg', 
+					class: "post_image_upload"%>
+		</span>
+  </span>
 <% end %>
