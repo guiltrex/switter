@@ -11,7 +11,7 @@ module ApplicationHelper
   end
   
   def show_name(name)
-		name.downcase.capitalize
+		name.titleize #name.downcase.capitalize
 	end
 
 end
