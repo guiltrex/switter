@@ -61,4 +61,24 @@ describe User do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
   end
+  
+  describe "friends" do
+		it {should respond_to(:friendships)}
+		it {should respond_to(:friends)}
+		it {should respond_to(:friend?)}
+		it {should respond_to(:friend!)}
+		it {should respond_to(:no_more_friend!)}		
+	end
+	
+	describe "making friends" do
+		let(:user1) {FactoryGirl.create(:user1)}
+		before do
+			@user.save
+			@user.friend!(user1)
+		end
+		
+		#attention to next line, it's very interesting!
+		it {should be_friend(user1)}
+		its(:friends) {should include(user1)}
+	end
 end

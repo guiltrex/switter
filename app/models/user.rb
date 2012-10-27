@@ -12,11 +12,28 @@ class User < ActiveRecord::Base
   mount_uploader :pro_image, ImageUploader
 	
 	has_many :microposts, :dependent => :destroy
+	has_many :friendships, :dependent => :destroy
+	has_many :friends, through: :friendships, source: :friend
 	
 	def admin?
 		self.admin
 	end
   
+  def friend?(other_user)
+		#My version: self.friends.exist?(user.id)
+		#ROR tutorial modified version and below:
+		self.friendships.find_by_friend_id(other_user.id)
+  end
+  
+  def friend!(other_user)
+		self.friendships.create!(friend_id: other_user.id)
+  end
+  
+  def no_more_friend!(other_user)
+		self.friendships.find_by_friend_id(other_user.id).destroy if self.friendships.find_by_friend_id(other_user.id)
+  end
+  
+
   private
   def generate_token(column)
 		begin
