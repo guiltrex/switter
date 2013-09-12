@@ -2,8 +2,15 @@
 <div class="row">
   <aside class="span4">
     <section>
-			<%= render partial: "shared/user_info", locals: {id_route_ver: params[:id]||0} %>
+				<%= render partial: "shared/user_info", locals: {id_route_ver: params[:id]||0} %>
+				<%= render 'friend_form' if signed_in? %>	
     </section>
+    <section>
+        <%= render 'shared/stats' %>
+    </section>
+    <section>        
+        <%= render 'shared/gs' %>
+    </section>    
     <% if current_user?(@user) %>
 			<section>
 				<%= render partial: 'shared/micropost_form' %>

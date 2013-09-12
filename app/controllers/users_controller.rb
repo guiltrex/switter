@@ -70,4 +70,11 @@ class UsersController < ApplicationController
 		@users = User.paginate(page: params[:page], per_page: 25).order('created_at DESC')
 #		store_page
   end
+  
+  def friends
+		@title="Friend"
+		@user=User.find(params[:id])
+		@users=@user.friends.paginate(page: params[:page]).order('username')
+		render 'friends'
+  end
 end

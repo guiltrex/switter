@@ -1,14 +1,19 @@
 Wegroup::Application.routes.draw do
 
   resources :users do
-			get 'home', :on => :member
+		member do	
+			get 'home' 		#, :on => :member
+			get 'friends' #, :on => :member
+		end
   end
   #:path=>"" used to make '/sessions' disappear in url after incorrect login 
   resources :sessions, only: [:create, :destroy], :path => ""
 	resources :microposts, only: [:create, :destroy]
-	
+  resources :friendships, only: [:create, :destroy]	
+  
+  
 	match '/microposts', to: 'users#home'
-	
+
   match '/users',  to: 'users#index'
   match '/signup',  to: 'users#new'
   match '/logout', to: 'sessions#destroy', via: :delete

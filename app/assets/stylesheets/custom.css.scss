@@ -4,7 +4,7 @@ $navbarLinkColor: #c9c9c9;
 @import "bootstrap";
 
 /* mixins, variables, etc. */
-
+$name_link: #333333;
 $grayMediumLight: #eaeaea;
 
 @mixin box_sizing {
@@ -152,6 +152,39 @@ aside {
       letter-spacing: -1px;
       margin-bottom: 3px;
     }
+    #friend_form {
+			margin-top: 9px;
+		}
+		form {
+			margin-bottom: 0px;
+		}
+		a#namelink {
+			color: $name_link;
+    }
+		.friend_avatars{
+			margin-top: 3px;
+		}
+  }
+}
+
+.stats {
+  overflow: auto;
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid $grayLighter;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: $blue;
+    }
+  }
+  strong {
+    display: block;
   }
 }
 
@@ -161,6 +194,14 @@ aside {
   float: left;
   margin-right: 10px;
 }
+
+#pre_pimage {
+  height:30px;
+  width:30px;
+  float: left;
+  margin: 2px;
+}
+
 
 /* forms */
 
@@ -285,11 +326,11 @@ form .btn-sign-up {
 
 .users {
   list-style: none;
-  margin: 0;
+  margin: 10px 0 0 0;
   li {
     overflow: auto;
-    padding: 10px 0;
-    border-top: 1px solid $grayLighter;
+    padding: 11px 0;
+    border-bottom: 1px solid $grayLighter;
     &:last-child {
       border-bottom: 1px solid $grayLighter;
     }

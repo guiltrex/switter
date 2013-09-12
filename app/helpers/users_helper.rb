@@ -28,5 +28,21 @@ module UsersHelper
 
   def store_page
     session[:page_to] = params[:page]
-  end			
+  end
+  
+	def pluralize_no_count(count, noun, text = nil)
+		unless count == 0
+			"#{noun.pluralize(count)}#{text}"
+		else
+			"0 #{noun}#{text}"
+		end
+	end  		
+	
+	def pluralize_zero_no(count, noun, text = nil)
+		unless count == 0
+			"#{pluralize(count, noun)}#{text}"
+		else
+			"0 #{noun}#{text}"
+		end
+	end  				
 end

@@ -15,6 +15,11 @@ class User < ActiveRecord::Base
 	has_many :friendships, :dependent => :destroy
 	has_many :friends, through: :friendships, source: :friend
 	
+	#Example of :source : has_many :followed_users, through: :relationships, source: :followed
+	#Rails allows us to override the default, in this case using the :source parameter 
+	#which explicitly tells Rails that the source of the followed_users array is the set of followed ids.
+	#So, the source above could be omitted.
+	
 	def admin?
 		self.admin
 	end

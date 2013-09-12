@@ -5,6 +5,12 @@
 			<%= render partial: "shared/user_info", locals: {id_route_ver: params[:id]||0} %>
     </section>
     <section>
+        <%= render 'shared/stats' %>
+    </section>
+    <section>        
+        <%= render 'shared/gs' %>
+    </section>
+    <section>
       <%= render 'shared/micropost_form' %>
      </section>    
   </aside>

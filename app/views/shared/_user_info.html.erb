@@ -1,11 +1,14 @@
 <h1>
 	<!--  current_page? assumes that the pages that render this partial have id as a param. 
 				If they do not, it's better to use a local variable(id_route_ver) here for that. -->
-	<% if current_page?(:controller => 'users', :action => 'show', :id => id_route_ver) %>
+	<% if current_page?(:controller => 'users', :action => 'show', :id => id_route_ver) ||
+				current_page?(:controller => 'users', :action => 'friends', :id => id_route_ver)%>
 		<a href="<%= user_path(@user) %>">
 			<%= render partial: "users/profimage", :locals => { :user => @user} %>
 		</a>
-    <%= show_name(@user.username) %>
+		<a href="<%= user_path(@user) %>" id="namelink">
+			<%= show_name(@user.username) %>
+		</a>
 	<% else %>  
 		<a href="<%= user_path(current_user) %>">
 			<%= render partial: "users/profimage", :locals => { :user => current_user} %>
@@ -14,14 +17,16 @@
 	<% end %>
 </h1>
 <span>
-  <% if current_page?(:controller => 'users', :action => 'show', :id => id_route_ver) %>
+  <% if current_page?(:controller => 'users', :action => 'show', :id => id_route_ver) ||
+				current_page?(:controller => 'users', :action => 'friends', :id => id_route_ver) %>
 		<%= @user.email %>
 	<% else %>
 		<%= link_to "view my profile", current_user %>
 	<% end %>
 </span>
 <span>
-	<% if current_page?(:controller => 'users', :action => 'show', :id => id_route_ver) %>
+	<% if current_page?(:controller => 'users', :action => 'show', :id => id_route_ver) ||
+				current_page?(:controller => 'users', :action => 'friends', :id => id_route_ver)%>	
 		<%= pluralize(@user.microposts.count, "micropost") %>
 	<% else %>
 		<%= pluralize(current_user.microposts.count, "micropost") %>

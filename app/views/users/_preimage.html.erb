@@ -1,0 +1,6 @@
+	<% if user.pro_image_url%>
+		<%= image_tag user.pro_image_url(:prethumb).to_s,:id => "pre_pimage", class: "img-rounded"%>
+	<% else %>   
+		<%= image_tag "rails.png", alt: "Rails", :id => "pre_pimage", class: "img-rounded"%>
+	<% end %>
+	</a>
